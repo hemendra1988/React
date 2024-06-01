@@ -1,7 +1,12 @@
+import Test from "./test"
 function App() {
 
   return (
-    <h1>React Study with Vite | HV</h1>
+   <>
+   <Test /> 
+   <p>Hi Paragraph</p>
+   <h1>Hell Heading</h1>
+   </>
   )
 }
 

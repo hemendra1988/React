@@ -1,11 +1,12 @@
 import Test from "./test"
 function App() {
 
+  const username = "Hemendra Verma"
   return (
    <>
-   <Test /> 
-   <p>Hi Paragraph</p>
-   <h1>Hell Heading</h1>
+   {/* <Test />  */}
+   <p>Hi {username}</p>
+   <h1>Hello {username}</h1>
    </>
   )
 }

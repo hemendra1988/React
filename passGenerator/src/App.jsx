@@ -5,14 +5,19 @@ function App() {
   const [numAllowed, setNumAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [pwd, setPwd] = useState("")
+  const [btnColor, setBtnColor] = useState('blue')
 
   //useRef hook
   const pwdRef = useRef(null)
 
+  
+
   const copyPwd = useCallback(() => {
+    setBtnColor('red')
     pwdRef.current?.select()
-    pwdRef.current?.setSelectionRange(0,5)
-    window.navigator.clipboard.writeText(pwd)
+    //pwdRef.current?.setSelectionRange(0,5)
+    window.navigator.clipboard.writeText(
+      pwd)
   }, [pwd])
 
   const pwdGenerator = useCallback(()=>{
@@ -20,7 +25,7 @@ function App() {
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     if (numAllowed) str += "0123456789"
     if (charAllowed) str += "!@#$%^&*-_+=[]{}`~"
-
+    setBtnColor('blue')
     for (let i = 1; i <= length; i++){
      let char = Math.floor(Math.random() * str.length +1)
      pass += str.charAt(char)
@@ -28,6 +33,7 @@ function App() {
    setPwd(pass)
   }, 
     [length, numAllowed, charAllowed, setPwd])
+    
 
   useEffect(() => {
     pwdGenerator()
@@ -50,7 +56,8 @@ function App() {
           />
           <button 
             onClick={copyPwd}
-            className='outline-none bg-blue-700
+            style={{backgroundColor: btnColor}}
+            className='outline-non 
             text-white px-3 py-0.5 shrink-0'
             >Copy</button>
         </div>

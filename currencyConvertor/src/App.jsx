@@ -33,19 +33,19 @@ function App() {
             <div className="w-full">
                 <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
                     <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            convert()
-                        }}
+                        // onSubmit={(e) => {
+                        //     e.preventDefault();
+                        //     convert()
+                        // }}
                     >
                         <div className="w-full mb-1">
                             <InputBox
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setFrom(currency)}
+                                onCurrencyChange={(currency) => {setFrom(currency); setAmount(0); setConvertedAmount(0)}}
                                 selectCurrency={from}
-                                onAmountChange={(amount) => setAmount(amount)}
+                                onAmountChange={(amount) => {setAmount(amount); convert(amount)}}
                             />
                         </div>
                         <div className="relative w-full h-0.5">
@@ -62,14 +62,14 @@ function App() {
                                 label="To"
                                 amount={convertedAmount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setTo(currency)}
+                                onCurrencyChange={(currency) => {setTo(currency); setAmount(0); setConvertedAmount(0)}}
                                 selectCurrency={to}
                                 amountDisable
                             />
                         </div>
-                        <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
+                        {/* <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
                             Convert {from.toUpperCase()} to {to.toUpperCase()}
-                        </button>
+                        </button> */}
                     </form>
                 </div>
             </div>

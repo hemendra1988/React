@@ -10,8 +10,6 @@ function App() {
   //useRef hook
   const pwdRef = useRef(null)
 
-  
-
   const copyPwd = useCallback(() => {
     setBtnColor('red')
     pwdRef.current?.select()
